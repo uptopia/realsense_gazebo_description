@@ -1,7 +1,19 @@
 <?xml version="1.0"?>
 
 <robot name="realsense_cameras" xmlns:xacro="http://ros.org/wiki/xacro">
+
   <link name="base_link"/>
+
+  <!-- add a belt12mm -->
+  <xacro:include filename="$(find belt12mm_description)/urdf/belt12mm.xacro"/>
+  <xacro:belt12mm  parent="base_link" prefix="belt12mm_">
+    <origin xyz="1.0 1.0 0.0" rpy="0.0 0.0 0.0"/>
+  </xacro:belt12mm>
+  <joint name="belt12mm_joint" type="fixed">
+          <parent link="base_link"/>
+          <child link="belt12mm_base_link"/>
+          <origin xyz="2 0 0" rpy="0 0 1.57"/>
+  </joint>
 
   <!-- d435  frame definition can be found at https://github.com/IntelRealSense/librealsense/blob/master/doc/d435i.md -->
   <xacro:include filename="$(find realsense_gazebo_description)/urdf/_d435.urdf.xacro"/>
@@ -11,7 +23,7 @@
 
   <!-- d435i frame definition can be found at https://github.com/IntelRealSense/librealsense/blob/master/doc/d435i.md -->
   <xacro:include filename="$(find realsense_gazebo_description)/urdf/_d435i.urdf.xacro"/>
-  <xacro:sensor_d435i parent="base_link" name="D435i_camera" topics_ns="D435i_camera">
+  <xacro:sensor_d435i parent="base_link" name="D435i_camera" topics_ns="D435i_camera" visualize="true">
     <origin xyz="0.0 0.5 0.0" rpy="0.0 0.0 0.0"/>
   </xacro:sensor_d435i>
 
@@ -37,5 +49,5 @@
       </geometry>
     </visual>
   </link>
-
+  
 </robot>
