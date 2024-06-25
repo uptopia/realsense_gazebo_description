@@ -1,0 +1,42 @@
+<launch>
+
+    <!-- Gazebo Visualization: Start gazebo empty_world-->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name"    value="worlds/empty.world"/> 
+        <arg name="paused"        value="false"/>
+        <arg name="use_sim_time"  value="true"/>
+        <arg name="gui"           value="true"/>
+        <arg name="recording"     value="false"/>
+        <arg name="debug"         value="false"/>
+    </include>
+
+    <!-- Spawn cameras -->
+    <arg name="model"       default="$(find realsense_gazebo_description)/urdf/singlecamera_d435i.urdf.xacro"/>
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)"/>
+    
+    <arg name="x" default="0.0"/>
+    <arg name="y" default="0.0"/>
+    <arg name="z" default="0.0"/>
+    <arg name="yaw" default="0.0"/>
+    <node name="spawn_singlecamera_model" pkg="gazebo_ros" type="spawn_model" machine=""
+      args="-x $(arg x)
+            -y $(arg y)
+            -z $(arg z)
+            -Y $(arg yaw)
+            -unpause
+            -urdf
+            -param robot_description
+            -model singlecamera"
+    />
+
+    <!-- State publishers -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+    <node pkg="robot_state_publisher" type="robot_state_publisher"  name="robot_state_publisher">
+        <param name="publish_frequency" type="double" value="30.0" />
+    </node>
+  
+
+    <!-- Rviz Visualization -->
+    <arg name="rviz_config" default="$(find realsense_gazebo_description)/rviz/urdf.rviz"/>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_config)" required="true" />
+</launch>

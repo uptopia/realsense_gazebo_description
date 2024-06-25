@@ -1,4 +1,5 @@
 <launch>
+
     <!-- arguments for the urdf xacro file -->
     <arg name="model_name"  default="camera_belt"/>
     <arg name="model"       default="$(find realsense_gazebo_description)/urdf/camera_belt.urdf.xacro"/>
@@ -50,4 +51,5 @@
     <!-- Rviz Visualization -->
     <param name="use_gui" value="$(arg gui)" />
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find realsense_gazebo_description)/rviz/urdf.rviz" required="true" />
+
 </launch>
