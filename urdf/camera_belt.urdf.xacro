@@ -10,6 +10,17 @@
     <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
   </xacro:sensor_d435i>
 
+  <!-- add a belt10mm -->
+  <xacro:include filename="$(find belt10mm_description)/urdf/belt10mm.xacro"/>
+  <xacro:belt10mm parent="base_link" prefix="belt10mm_">
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+  </xacro:belt10mm>
+  <joint name="belt10mm_joint" type="fixed">
+          <parent link="base_link"/>
+          <child link="belt10mm_base_link"/>
+          <origin xyz="2 0.5 0" rpy="0 0 1.57"/>
+  </joint>
+
   <!-- add a belt12mm -->
   <xacro:include filename="$(find belt12mm_description)/urdf/belt12mm.xacro"/>
   <xacro:belt12mm parent="base_link" prefix="belt12mm_">
@@ -18,7 +29,7 @@
   <joint name="belt12mm_joint" type="fixed">
           <parent link="base_link"/>
           <child link="belt12mm_base_link"/>
-          <origin xyz="2 0.5 0" rpy="0 0 1.57"/>
+          <origin xyz="2 -0.5 0" rpy="0 0 1.57"/>
   </joint>
   
 </robot>
