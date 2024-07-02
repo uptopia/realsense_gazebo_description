@@ -6,7 +6,6 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /TF1/Tree1/base_link1
         - /Camera1/Visibility1
       Splitter Ratio: 0.5677603483200073
     Tree Height: 394
@@ -59,6 +58,63 @@ Visualization Manager:
       Enabled: true
       Links:
         All Links Enabled: true
+        D435i_camera_accel_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        D435i_camera_accel_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        D435i_camera_bottom_screw_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        D435i_camera_color_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        D435i_camera_color_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        D435i_camera_depth_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        D435i_camera_depth_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        D435i_camera_gyro_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        D435i_camera_gyro_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        D435i_camera_left_ir_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        D435i_camera_left_ir_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        D435i_camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        D435i_camera_right_ir_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        D435i_camera_right_ir_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
@@ -67,73 +123,11 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        belt10mm_base_link:
+        cone_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        belt12mm_base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        camera_accel_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_accel_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_bottom_screw_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_color_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_color_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_depth_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_depth_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_gyro_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_gyro_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_left_ir_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_left_ir_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        camera_right_ir_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_right_ir_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -147,39 +141,37 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        D435i_camera_accel_frame:
+          Value: true
+        D435i_camera_accel_optical_frame:
+          Value: true
+        D435i_camera_bottom_screw_frame:
+          Value: true
+        D435i_camera_color_frame:
+          Value: true
+        D435i_camera_color_optical_frame:
+          Value: true
+        D435i_camera_depth_frame:
+          Value: true
+        D435i_camera_depth_optical_frame:
+          Value: true
+        D435i_camera_gyro_frame:
+          Value: true
+        D435i_camera_gyro_optical_frame:
+          Value: true
+        D435i_camera_left_ir_frame:
+          Value: true
+        D435i_camera_left_ir_optical_frame:
+          Value: true
+        D435i_camera_link:
+          Value: true
+        D435i_camera_right_ir_frame:
+          Value: true
+        D435i_camera_right_ir_optical_frame:
+          Value: true
         base_link:
           Value: true
-        belt10mm_base_link:
-          Value: true
-        belt12mm_base_link:
-          Value: true
-        camera_accel_frame:
-          Value: true
-        camera_accel_optical_frame:
-          Value: true
-        camera_bottom_screw_frame:
-          Value: true
-        camera_color_frame:
-          Value: true
-        camera_color_optical_frame:
-          Value: true
-        camera_depth_frame:
-          Value: true
-        camera_depth_optical_frame:
-          Value: true
-        camera_gyro_frame:
-          Value: true
-        camera_gyro_optical_frame:
-          Value: true
-        camera_left_ir_frame:
-          Value: true
-        camera_left_ir_optical_frame:
-          Value: true
-        camera_link:
-          Value: true
-        camera_right_ir_frame:
-          Value: true
-        camera_right_ir_optical_frame:
+        cone_link:
           Value: true
       Marker Alpha: 1
       Marker Scale: 0.10000000149011612
@@ -189,30 +181,28 @@ Visualization Manager:
       Show Names: true
       Tree:
         base_link:
-          belt10mm_base_link:
+          D435i_camera_bottom_screw_frame:
+            D435i_camera_link:
+              D435i_camera_accel_frame:
+                D435i_camera_accel_optical_frame:
+                  {}
+              D435i_camera_depth_frame:
+                D435i_camera_color_frame:
+                  D435i_camera_color_optical_frame:
+                    {}
+                D435i_camera_depth_optical_frame:
+                  {}
+                D435i_camera_left_ir_frame:
+                  D435i_camera_left_ir_optical_frame:
+                    {}
+                D435i_camera_right_ir_frame:
+                  D435i_camera_right_ir_optical_frame:
+                    {}
+              D435i_camera_gyro_frame:
+                D435i_camera_gyro_optical_frame:
+                  {}
+          cone_link:
             {}
-          belt12mm_base_link:
-            {}
-          camera_bottom_screw_frame:
-            camera_link:
-              camera_accel_frame:
-                camera_accel_optical_frame:
-                  {}
-              camera_depth_frame:
-                camera_color_frame:
-                  camera_color_optical_frame:
-                    {}
-                camera_depth_optical_frame:
-                  {}
-                camera_left_ir_frame:
-                  camera_left_ir_optical_frame:
-                    {}
-                camera_right_ir_frame:
-                  camera_right_ir_optical_frame:
-                    {}
-              camera_gyro_frame:
-                camera_gyro_optical_frame:
-                  {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -238,7 +228,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.009999999776482582
       Style: Points
-      Topic: /camera/depth_registered/points
+      Topic: /D435i_camera/depth_registered/points
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -246,7 +236,7 @@ Visualization Manager:
     - Class: rviz/Camera
       Enabled: true
       Image Rendering: overlay
-      Image Topic: /camera/color/image_raw
+      Image Topic: /D435i_camera/color/image_raw
       Name: Camera
       Overlay Alpha: 1
       Queue Size: 2
@@ -288,7 +278,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 3.6169285774230957
+      Distance: 4.537075042724609
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1

@@ -263,9 +263,10 @@ This is the Gazebo URDF model for the Intel RealSense D435i camera
 
         <!-- Pointlcloud settings -->
       	<pointCloud>${enable_pointCloud}</pointCloud>
-      	<pointCloudTopicName>depth/color/points</pointCloudTopicName>
-        <!-- <pointCloudTopicName>depth_registered/points</pointCloudTopicName> -->
-      	<pointCloudCutoff>0.1</pointCloudCutoff>
+        <pointCloudTopicName>depth_registered/points</pointCloudTopicName>
+        <!-- <pointCloudTopicName>depth/color/points</pointCloudTopicName> -->
+        <!-- <pointCloudTopicName>/camera/depth_registered/points</pointCloudTopicName> -->
+        <pointCloudCutoff>0.1</pointCloudCutoff>
 
       </plugin>
     </gazebo>

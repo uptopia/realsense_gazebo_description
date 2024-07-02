@@ -37,6 +37,6 @@
   
 
     <!-- Rviz Visualization -->
-    <arg name="rviz_config" default="$(find realsense_gazebo_description)/rviz/urdf.rviz"/>
+    <arg name="rviz_config" default="$(find realsense_gazebo_description)/rviz/urdf_singlecamera.rviz"/>
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_config)" required="true" />
 </launch>
