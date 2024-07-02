@@ -13,37 +13,36 @@ This is the Gazebo URDF model for the Intel RealSense D435i camera
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:macro name="gazebo_d435i" params=" reference_link
-                                            camera_name:=camera
+  <xacro:macro name="gazebo_d435i" params=" camera_name:=camera
                                             topics_ns:=camera
+                                            reference_link
 
                                             depth_optical_frame
-                                            color_optical_frame
-                                            infrared1_optical_frame
-                                            infrared2_optical_frame
-                                            accel_optical_frame
-                                            gyro_optical_frame
-
-                                            visualize:=false
-                                            align_depth:=false
-                                            enable_pointCloud:=false
-
-                                            unite_imu_method:=false
-                                            accel_fps:=250
-                                            gyro_fps:=400
-
-                                            clip_distance:=-1.0
                                             depth_width:=1280
                                             depth_height:=720
                                             depth_fps:=30
 
-                                            infra_width:=640
-                                            infra_height:=480
-                                            infra_fps:=30
-
+                                            color_optical_frame
                                             color_width:=1920
                                             color_height:=1080
                                             color_fps:=30
+
+                                            infrared1_optical_frame
+                                            infrared2_optical_frame
+                                            infra_width:=640
+                                            infra_height:=480
+                                            infra_fps:=30     
+
+                                            accel_optical_frame
+                                            gyro_optical_frame
+                                            accel_fps:=250
+                                            gyro_fps:=400
+
+                                            enable_pointCloud:=false
+                                            unite_imu_method:=false
+                                            clip_distance:=-1.0
+                                            align_depth:=false
+                                            visualize:=false
                                             ">
 
     <!-- Load parameters to model's main link-->
@@ -265,7 +264,8 @@ This is the Gazebo URDF model for the Intel RealSense D435i camera
         <!-- Pointlcloud settings -->
       	<pointCloud>${enable_pointCloud}</pointCloud>
       	<pointCloudTopicName>depth/color/points</pointCloudTopicName>
-      	<pointCloudCutoff>0.5</pointCloudCutoff>
+        <!-- <pointCloudTopicName>depth_registered/points</pointCloudTopicName> -->
+      	<pointCloudCutoff>0.1</pointCloudCutoff>
 
       </plugin>
     </gazebo>

@@ -83,7 +83,9 @@
   <link name='cone_link'>
     <visual>
       <geometry>
-        <mesh filename="model://construction_cone/meshes/construction_cone.dae" scale="10 10 10"/>
+        <!-- <mesh filename="model://construction_cone/meshes/construction_cone.dae" scale="10 10 10"/> -->
+        <!-- export GAZEBO_MODEL_PATH=/home/user/.gazebo/models -->
+        <mesh filename="file://$(env GAZEBO_MODEL_PATH)/construction_cone/meshes/construction_cone.dae" scale="10 10 10"/>
       </geometry>
     </visual>
   </link>
