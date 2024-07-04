@@ -7,7 +7,8 @@
   <xacro:include filename="$(find realsense_gazebo_description)/urdf/_d435.urdf.xacro"/>
   <xacro:sensor_d435  parent="base_link" name="D435_camera" topics_ns="D435_camera"
                       enable_pointCloud="false"
-                      clip_distance="-1.0"
+                      clip_distance_z_min="0.1"
+                      clip_distance_z_max="-1.0"
                       align_depth="false"
                       visualize="false"
 
@@ -31,9 +32,10 @@
   <xacro:include filename="$(find realsense_gazebo_description)/urdf/_d435i.urdf.xacro"/>
   <xacro:sensor_d435i parent="base_link" name="D435i_camera" topics_ns="D435i_camera"
                       enable_pointCloud="true"
-                      clip_distance="-1.0"
+                      clip_distance_z_min="-1.0"
+                      clip_distance_z_max="-1.0"
                       align_depth="false"
-                      visualize="false"
+                      visualize_color="false"
 
                       unite_imu_method="false"
                       accel_fps="250"

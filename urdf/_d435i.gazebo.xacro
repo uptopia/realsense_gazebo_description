@@ -26,6 +26,7 @@ This is the Gazebo URDF model for the Intel RealSense D435i camera
                                             color_width:=1920
                                             color_height:=1080
                                             color_fps:=30
+                                            visualize_color:=false
 
                                             infrared1_optical_frame
                                             infrared2_optical_frame
@@ -40,10 +41,10 @@ This is the Gazebo URDF model for the Intel RealSense D435i camera
 
                                             enable_pointCloud:=false
                                             unite_imu_method:=false
-                                            clip_distance:=-1.0
+                                            clip_distance_z_min:=0.1
+                                            clip_distance_z_max:=-0.1
                                             align_depth:=false
-                                            visualize:=false
-                                            ">
+                                                                                        ">
 
     <!-- Load parameters to model's main link-->
     <xacro:property name="deg_to_rad" value="0.01745329251994329577"/>
@@ -61,6 +62,8 @@ This is the Gazebo URDF model for the Intel RealSense D435i camera
       <kd>1</kd>
       <!--<max_vel>0.01</max_vel>
       <min_depth>0</min_depth>-->
+
+      <!-- Color -->
       <sensor name="${camera_name}color" type="camera">
         <camera name="${camera_name}">
           <horizontal_fov>${69.4*deg_to_rad}</horizontal_fov>
@@ -81,8 +84,9 @@ This is the Gazebo URDF model for the Intel RealSense D435i camera
         </camera>
         <always_on>1</always_on>
         <update_rate>${color_fps}</update_rate>
-        <visualize>${visualize}</visualize>
+        <visualize>${visualize_color}</visualize>
       </sensor>
+      <!-- InfarRed1:Left -->
       <sensor name="${camera_name}ired1" type="camera">
         <camera name="${camera_name}">
           <horizontal_fov>${85.2*deg_to_rad}</horizontal_fov>
@@ -105,6 +109,7 @@ This is the Gazebo URDF model for the Intel RealSense D435i camera
         <update_rate>${infra_fps}</update_rate>
         <visualize>false</visualize>
       </sensor>
+      <!-- InfarRed2:Right -->
       <sensor name="${camera_name}ired2" type="camera">
         <camera name="${camera_name}">
           <horizontal_fov>${85.2*deg_to_rad}</horizontal_fov>
@@ -127,6 +132,7 @@ This is the Gazebo URDF model for the Intel RealSense D435i camera
         <update_rate>${infra_fps}</update_rate>
         <visualize>false</visualize>
       </sensor>
+      <!-- Depth -->
       <sensor name="${camera_name}depth" type="depth">
         <camera name="${camera_name}">
           <!-- align-depth settings -->
@@ -145,12 +151,12 @@ This is the Gazebo URDF model for the Intel RealSense D435i camera
             </image>
           </xacro:if>
           <clip>
-            <near>0.1</near>
-            <xacro:unless value="${clip_distance > 0.0}">
+            <near>${clip_distance_z_min}</near>
+            <xacro:unless value="${clip_distance_z_max > 0.0}">
               <far>100</far>
             </xacro:unless>
-            <xacro:if value="${clip_distance > 0.0}">
-              <far>${clip_distance}</far>
+            <xacro:if value="${clip_distance_z_max > 0.0}">
+              <far>${clip_distance_z_max}</far>
             </xacro:if>
           </clip>
           <noise>
@@ -221,6 +227,7 @@ This is the Gazebo URDF model for the Intel RealSense D435i camera
       </xacro:unless>
     </gazebo>
 
+    <!-- Load plugin to the model ("robot" in urdf format)-->
     <gazebo>
       <plugin name="${topics_ns}" filename="librealsense_gazebo_plugin.so">
         <prefix>${camera_name}</prefix>
@@ -242,11 +249,11 @@ This is the Gazebo URDF model for the Intel RealSense D435i camera
 
         <!-- Depth camera settings -->
       	<rangeMinDepth>0.2</rangeMinDepth>
-        <xacro:unless value="${clip_distance > 0.0}">
+        <xacro:unless value="${clip_distance_z_max > 0.0}">
       	  <rangeMaxDepth>10.0</rangeMaxDepth>
         </xacro:unless>
-        <xacro:if value="${clip_distance > 0.0}">
-          <rangeMaxDepth>${clip_distance}</rangeMaxDepth>
+        <xacro:if value="${clip_distance_z_max > 0.0}">
+          <rangeMaxDepth>${clip_distance_z_max}</rangeMaxDepth>
         </xacro:if>
         <xacro:unless value="${align_depth}">
         	<depthUpdateRate>${depth_fps}</depthUpdateRate>
@@ -270,6 +277,5 @@ This is the Gazebo URDF model for the Intel RealSense D435i camera
 
       </plugin>
     </gazebo>
-
   </xacro:macro>
 </robot>

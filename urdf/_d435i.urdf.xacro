@@ -19,7 +19,7 @@ aluminum peripherial evaluation case.
   <xacro:macro name="sensor_d435i" params="parent
                                           name:=camera
                                           topics_ns:=camera
-                                          visualize:=false
+                                          visualize_color:=false
                                           align_depth:=false
                                           enable_pointCloud:=false
 
@@ -27,7 +27,8 @@ aluminum peripherial evaluation case.
                                           accel_fps:=250
                                           gyro_fps:=400
 
-                                          clip_distance:=-1.0
+                                          clip_distance_z_min:=0.1
+                                          clip_distance_z_max:=-1.0
                                           depth_width:=1280
                                           depth_height:=720
                                           depth_fps:=30
@@ -222,9 +223,10 @@ aluminum peripherial evaluation case.
 
                         enable_pointCloud="${enable_pointCloud}"
                         unite_imu_method="${unite_imu_method}"
-                        clip_distance="${clip_distance}"
+                        clip_distance_z_min="${clip_distance_z_min}"
+                        clip_distance_z_max="${clip_distance_z_max}"
                         align_depth="${align_depth}"
-                        visualize="${visualize}"
+                        visualize_color="${visualize_color}"
     />
 
   </xacro:macro>
