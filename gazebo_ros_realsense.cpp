@@ -189,7 +189,7 @@ bool GazeboRosRealsense::FillPointCloudHelper(sensor_msgs::PointCloud2 &point_cl
 
       // put image color data for each point
       uint8_t *image_src = (uint8_t *)(&(this->image_msg_.data[0]));
-      cout << "=========================>:" <<this->image_msg_.data.size() <<endl;
+      // cout << "=========================>:" <<this->image_msg_.data.size() <<endl;
       if (this->image_msg_.data.size() == rows_arg * cols_arg * 3)
       {
         // color

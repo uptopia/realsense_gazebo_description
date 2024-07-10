@@ -5,19 +5,19 @@
   <link name="base_link"/>
 
   <!-- d435i frame definition can be found at https://github.com/IntelRealSense/librealsense/blob/master/doc/d435i.md -->
-  <xacro:include filename="$(find realsense_gazebo_description)/urdf/_d435i.urdf.xacro" />
+  <!-- <xacro:include filename="$(find realsense_gazebo_description)/urdf/_d435i.urdf.xacro" />
   <xacro:sensor_d435i parent="base_link" name="camera" topics_ns="camera" visualize_color="true" align_depth="true" enable_pointCloud="true">
     <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-  </xacro:sensor_d435i>
+  </xacro:sensor_d435i> -->
 
   <!-- d405 -->
-  <!-- <xacro:include filename="$(find realsense2_description)/urdf/_d405.urdf.xacro" />
+  <xacro:include filename="$(find realsense2_description)/urdf/_d405.urdf.xacro" />
   <xacro:sensor_d405 parent="base_link" name="camera" topics_ns="camera" use_nominal_extrinsics="true" visualize_color="true" align_depth="true" enable_pointCloud="true">
     <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-  </xacro:sensor_d405> -->
+  </xacro:sensor_d405>
 
   <!-- add a belt10mm -->
-  <xacro:include filename="$(find belt10mm_description)/urdf/belt10mm.xacro"/>
+  <!-- <xacro:include filename="$(find belt10mm_description)/urdf/belt10mm.xacro"/>
   <xacro:belt10mm parent="base_link" prefix="belt10mm_">
     <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
   </xacro:belt10mm>
@@ -25,7 +25,7 @@
           <parent link="base_link"/>
           <child link="belt10mm_base_link"/>
           <origin xyz="1 0.12 0" rpy="0 0 1.57"/>
-  </joint>
+  </joint> -->
 
   <!-- add a belt12mm -->
   <xacro:include filename="$(find belt12mm_description)/urdf/belt12mm.xacro"/>
@@ -35,7 +35,7 @@
   <joint name="belt12mm_joint" type="fixed">
           <parent link="base_link"/>
           <child link="belt12mm_base_link"/>
-          <origin xyz="1 -0.12 0" rpy="0 0 1.57"/>
+          <origin xyz="0.5 -0.12 0" rpy="0 0 1.57"/>
   </joint>
   
 </robot>
